@@ -31,7 +31,7 @@ export default function Message({ message }: { message: Imessage }) {
         <div className="flex items-center justify-between">
           <div className="flex items-center gap-1">
             <h1 className="font-bold">{message.users?.display_name}</h1>
-            <h1 className="text-sm text-gray-400">
+            <h1 className="text-sm text-gray-500">
               {new Date(message.created_at).toDateString()}
             </h1>
             {message.is_edit && (
