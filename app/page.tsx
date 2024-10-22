@@ -3,7 +3,6 @@ import ChatHeader from "@/components/ChatHeader";
 import { supabaseServer } from "@/lib/supabase/server";
 import InitUser from "@/lib/store/InitUser";
 import ChatInput from "@/components/ChatInput";
-import ListMessages from "@/components/ListMessages";
 import ChatMessages from "@/components/ChatMessages";
 import ChatAbout from "@/components/ChatAbout";
 
