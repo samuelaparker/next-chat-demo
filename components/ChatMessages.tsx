@@ -6,13 +6,26 @@ import { LIMIT_MESSAGE } from "@/lib/constant";
 
 export default async function ChatMessages() {
   const supabase = supabaseServer();
+  let data; // Declare data outside of the try block
 
-  const { data } = await supabase
-    .from("messages")
-    .select("*,users(*)")
-    .range(0, LIMIT_MESSAGE)
-    .order("created_at", { ascending: false });
-  console.log("data: ", data);
+  try {
+    const response = await supabase
+      .from("messages")
+      .select("*,users(*)")
+      .range(0, LIMIT_MESSAGE)
+      .order("created_at", { ascending: false });
+
+    data = response.data; // Assign data from response
+    const error = response.error;
+
+    if (error) {
+      console.error("Error fetching data: ", error);
+    } else {
+      console.log("data: ", data);
+    }
+  } catch (err) {
+    console.error("Unexpected error: ", err);
+  }
 
   return (
     <Suspense fallback={"loading.."}>
