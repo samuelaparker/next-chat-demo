@@ -1,4 +1,3 @@
-import { User } from "@supabase/supabase-js";
 import { create } from "zustand";
 import { LIMIT_MESSAGE } from "../constant";
 
