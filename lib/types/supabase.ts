@@ -4,86 +4,86 @@ export type Json =
   | boolean
   | null
   | { [key: string]: Json | undefined }
-  | Json[]
+  | Json[];
 
 export interface Database {
   public: {
     Tables: {
       messages: {
         Row: {
-          created_at: string
-          id: string
-          is_edit: boolean
-          send_by: string
-          text: string
-        }
+          created_at: string;
+          id: string;
+          is_edit: boolean;
+          sent_by: string;
+          text: string;
+        };
         Insert: {
-          created_at?: string
-          id?: string
-          is_edit?: boolean
-          send_by?: string
-          text: string
-        }
+          created_at?: string;
+          id?: string;
+          is_edit?: boolean;
+          sent_by?: string;
+          text: string;
+        };
         Update: {
-          created_at?: string
-          id?: string
-          is_edit?: boolean
-          send_by?: string
-          text?: string
-        }
+          created_at?: string;
+          id?: string;
+          is_edit?: boolean;
+          sent_by?: string;
+          text?: string;
+        };
         Relationships: [
           {
-            foreignKeyName: "messages_send_by_fkey"
-            columns: ["send_by"]
-            isOneToOne: false
-            referencedRelation: "users"
-            referencedColumns: ["id"]
+            foreignKeyName: "messages_sent_by_fkey";
+            columns: ["sent_by"];
+            isOneToOne: false;
+            referencedRelation: "users";
+            referencedColumns: ["id"];
           }
-        ]
-      }
+        ];
+      };
       users: {
         Row: {
-          avatar_url: string
-          created_at: string
-          display_name: string
-          id: string
-        }
+          avatar_url: string;
+          created_at: string;
+          display_name: string;
+          id: string;
+        };
         Insert: {
-          avatar_url: string
-          created_at?: string
-          display_name: string
-          id: string
-        }
+          avatar_url: string;
+          created_at?: string;
+          display_name: string;
+          id: string;
+        };
         Update: {
-          avatar_url?: string
-          created_at?: string
-          display_name?: string
-          id?: string
-        }
+          avatar_url?: string;
+          created_at?: string;
+          display_name?: string;
+          id?: string;
+        };
         Relationships: [
           {
-            foreignKeyName: "users_id_fkey"
-            columns: ["id"]
-            isOneToOne: true
-            referencedRelation: "users"
-            referencedColumns: ["id"]
+            foreignKeyName: "users_id_fkey";
+            columns: ["id"];
+            isOneToOne: true;
+            referencedRelation: "users";
+            referencedColumns: ["id"];
           }
-        ]
-      }
-    }
+        ];
+      };
+    };
     Views: {
-      [_ in never]: never
-    }
+      [_ in never]: never;
+    };
     Functions: {
-      [_ in never]: never
-    }
+      [_ in never]: never;
+    };
     Enums: {
-      [_ in never]: never
-    }
+      [_ in never]: never;
+    };
     CompositeTypes: {
-      [_ in never]: never
-    }
-  }
+      [_ in never]: never;
+    };
+  };
 }
 
 export type Tables<
@@ -97,7 +97,7 @@ export type Tables<
 > = PublicTableNameOrOptions extends { schema: keyof Database }
   ? (Database[PublicTableNameOrOptions["schema"]]["Tables"] &
       Database[PublicTableNameOrOptions["schema"]]["Views"])[TableName] extends {
-      Row: infer R
+      Row: infer R;
     }
     ? R
     : never
@@ -105,11 +105,11 @@ export type Tables<
       Database["public"]["Views"])
   ? (Database["public"]["Tables"] &
       Database["public"]["Views"])[PublicTableNameOrOptions] extends {
-      Row: infer R
+      Row: infer R;
     }
     ? R
     : never
-  : never
+  : never;
 
 export type TablesInsert<
   PublicTableNameOrOptions extends
@@ -120,17 +120,17 @@ export type TablesInsert<
     : never = never
 > = PublicTableNameOrOptions extends { schema: keyof Database }
   ? Database[PublicTableNameOrOptions["schema"]]["Tables"][TableName] extends {
-      Insert: infer I
+      Insert: infer I;
     }
     ? I
     : never
   : PublicTableNameOrOptions extends keyof Database["public"]["Tables"]
   ? Database["public"]["Tables"][PublicTableNameOrOptions] extends {
-      Insert: infer I
+      Insert: infer I;
     }
     ? I
     : never
-  : never
+  : never;
 
 export type TablesUpdate<
   PublicTableNameOrOptions extends
@@ -141,17 +141,17 @@ export type TablesUpdate<
     : never = never
 > = PublicTableNameOrOptions extends { schema: keyof Database }
   ? Database[PublicTableNameOrOptions["schema"]]["Tables"][TableName] extends {
-      Update: infer U
+      Update: infer U;
     }
     ? U
     : never
   : PublicTableNameOrOptions extends keyof Database["public"]["Tables"]
   ? Database["public"]["Tables"][PublicTableNameOrOptions] extends {
-      Update: infer U
+      Update: infer U;
     }
     ? U
     : never
-  : never
+  : never;
 
 export type Enums<
   PublicEnumNameOrOptions extends
@@ -164,4 +164,4 @@ export type Enums<
   ? Database[PublicEnumNameOrOptions["schema"]]["Enums"][EnumName]
   : PublicEnumNameOrOptions extends keyof Database["public"]["Enums"]
   ? Database["public"]["Enums"][PublicEnumNameOrOptions]
-  : never
+  : never;
