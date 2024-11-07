@@ -13,21 +13,21 @@ export interface Database {
         Row: {
           created_at: string;
           id: string;
-          is_edit: boolean;
+          is_editableable: boolean;
           sent_by: string;
           text: string;
         };
         Insert: {
           created_at?: string;
           id?: string;
-          is_edit?: boolean;
+          is_editableable?: boolean;
           sent_by?: string;
           text: string;
         };
         Update: {
           created_at?: string;
           id?: string;
-          is_edit?: boolean;
+          is_editableable?: boolean;
           sent_by?: string;
           text?: string;
         };

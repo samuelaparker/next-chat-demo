@@ -4,7 +4,7 @@ import { LIMIT_MESSAGE } from "../constant";
 export type Imessage = {
   created_at: string;
   id: string;
-  is_edit: boolean;
+  is_editableable: boolean;
   sent_by: string;
   text: string;
   users: {
@@ -60,7 +60,7 @@ export const useMessage = create<MessageState>()((set) => ({
         messages: state.messages.filter((message) => {
           if (message.id === updateMessage.id) {
             (message.text = updateMessage.text),
-              (message.is_edit = updateMessage.is_edit);
+              (message.is_editableable = updateMessage.is_editableable);
           }
           return message;
         }),

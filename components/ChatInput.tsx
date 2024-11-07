@@ -19,7 +19,7 @@ export default function ChatInput() {
         id,
         text,
         sent_by: user?.id,
-        is_edit: false,
+        is_editable: false,
         created_at: new Date().toISOString(),
         users: {
           id: user?.id,
