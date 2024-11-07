@@ -35,7 +35,7 @@ export default function ChatInput() {
         toast.error(error.message);
       }
     } else {
-      toast.error("Message can not be empty!!");
+      toast.error("Message can not be empty");
     }
   };
 
