@@ -2,7 +2,7 @@
 import { Imessage, useMessage } from "@/lib/store/messages";
 import React, { useEffect, useRef, useState } from "react";
 import Message from "./Message";
-import { DeleteAlert, EditAlert } from "./MessasgeActions";
+import { DeleteAlert, EditAlert } from "./MessageActions";
 import { supabaseBrowser } from "@/lib/supabase/browser";
 import { toast } from "sonner";
 import { ArrowDown } from "lucide-react";
