@@ -45,7 +45,7 @@ export function DeleteAlert() {
     if (error) {
       toast.error(error.message);
     } else {
-      toast.success("Successfully delete a message");
+      toast.success("Successfully deleted message");
     }
   };
 
