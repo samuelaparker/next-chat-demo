@@ -34,7 +34,7 @@ export default function Message({ message }: { message: Imessage }) {
             <h1 className="text-sm text-gray-500">
               {new Date(message.created_at).toDateString()}
             </h1>
-            {message.is_editableable && (
+            {message.is_editable && (
               <h1 className="text-sm text-gray-400">edited</h1>
             )}
           </div>
